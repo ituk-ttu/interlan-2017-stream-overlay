@@ -20,7 +20,7 @@ var app = new Vue({
             self.show = bool;
         });
         self.io.on('data', function (data) {
-            console.log("RECIEVED NEW DATA");
+            console.log("RECEIVED NEW DATA");
             self.data = data;
         });
         self.io.emit('getData');
