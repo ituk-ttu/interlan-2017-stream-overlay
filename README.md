@@ -27,6 +27,8 @@ Run `npm install`.
 
 ## Compiling and Developing
 
+Copy `config/config.example.json` to `config/config.json`.
+
 To automagically compile files on edit run:
 
     npm run gulp
