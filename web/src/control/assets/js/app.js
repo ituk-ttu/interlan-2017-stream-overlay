@@ -39,6 +39,7 @@ var app = new Vue({
         self.io.on("disconnect", function () {
             self.connectionActive = false;
             console.log("CONNECTION STATUS SET TO: false");
+            self.authed = false;
         });
         self.io.on('authenticate', function (bool) {
             console.log("AUTH SET TO: " + bool);
@@ -53,7 +54,7 @@ var app = new Vue({
             self.overlay.show = bool;
         });
         self.io.on('data', function (data) {
-            console.log("RECIEVED NEW DATA");
+            console.log("RECEIVED NEW DATA");
             self.overlay.current = data;
             self.overlay.modified = data;
             self.loading = false;
