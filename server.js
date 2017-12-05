@@ -17,7 +17,7 @@ io.on('connection', function(socket) {
     console.log(clk.green.underline.bold(socket.handshake.address) + clk.green(" has connected"));
     console.log(clk.green('Waiting for authentification...'));
     socket.on('authenticate', function (password) {
-        if (password === "qwerty") {
+        if (password === config.password) {
             socket.authed = true;
             console.log(clk.green('Successfully authenticated'));
             socket.emit('authenticate', true);
