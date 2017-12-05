@@ -1,0 +1,40 @@
+# Overlay for Interlan 2017 Livestream
+
+---
+
+## Requirements
+
+* Node.js
+* NPM
+
+---
+
+## Technologies
+
+* Jade
+* Less
+* Vue.js
+* Socket.io
+* Gulp
+
+---
+
+## Setup
+
+Run `npm install`.
+
+---
+
+## Compiling and Developing
+
+To automagically compile files on edit run:
+
+    npm run gulp
+
+For one-time compile run:
+
+    npm run compile
+
+To start the server:
+
+    npm serve
