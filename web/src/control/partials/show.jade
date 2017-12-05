@@ -1,0 +1,14 @@
+.row
+    .col-xs-12
+        .progress
+            .progress-bar.progress-bar-success.progress-show(v-bind:class="[overlay.show ? 'active' : '']")
+            .progress-bar.progress-bar-danger.progress-hide(v-bind:class="[overlay.show ? '' : 'active']")
+    .col-xs-12
+        .panel.panel-default
+            .panel-heading Show
+            .panel-body
+                .btn-group
+                    button.btn.btn-lg(v-bind:class="overlay.show ? 'btn-primary' : 'btn-default'" v-on:click="setVisible(true)")
+                        | Yes
+                    button.btn.btn-lg(v-bind:class="!overlay.show ? 'btn-primary' : 'btn-default'" v-on:click="setVisible(false)")
+                        | No

@@ -1,0 +1,36 @@
+.caster {
+  width: 600px;
+  transition: all 250ms cubic-bezier(0, 0.8, 1, 1);
+  &.left-caster {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    &.hidden {
+      transform: translateX(-120%);
+    }
+  }
+  &.right-caster {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    &.hidden {
+      transform: translateX(120%);
+    }
+  }
+  .nick {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 4em;
+    top: -54px;
+    color: #fff;
+  }
+  .name {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 54px;
+    color: #93C242;
+    font-size: 2em;
+  }
+}

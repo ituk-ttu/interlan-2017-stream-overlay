@@ -1,0 +1,43 @@
+doctype HTML
+html
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE-edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, authed-scalable=no")
+        meta(name="theme-color" content="#870042")
+        title Overlay Control Panel
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js")
+        link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css", rel="stylesheet")
+        link(rel="stylesheet" href="//bootswatch.com/3/superhero/bootstrap.min.css")
+        script(src="//unpkg.com/vue")
+        link(rel="stylesheet" href="assets/css/master.css")
+    body
+        #app(v-cloak)
+            .container.center-flex(v-if="connectionActive")
+                .container(v-if="authed && !loading")
+                    .row
+                        include partials/show
+                        include  partials/casters
+                    button.btn.btn-danger(v-on:click="resetData()") Reset
+                    button.btn.btn-success(v-on:click="setData()") Save
+                    button.btn.btn-info(v-on:click="saveToFile()") Write
+                    span.pull-right
+                        p Powered by #[a(href="https://ituk.ee") ITÜK]
+                .container.center-flex(v-if="authed && loading")
+                    h1 Loading...
+                .container(v-if="!authed")
+                    .row
+                        .col-xs-12
+                            .panel.panel-default
+                                .panel-heading Auth
+                                .panel-body
+                                    .alert.alert-danger(v-if="authError") Wrong password!
+                                    .form-group
+                                        label.control-label Password
+                                        input.form-control(v-model="password" type="password")
+                                    .form-group
+                                        button.btn.btn-success(v-on:click="auth(password)") Auth
+            .container.center-flex(v-if="!connectionActive")
+                h1 Connecting...
+        script(src="assets/js/app.js")

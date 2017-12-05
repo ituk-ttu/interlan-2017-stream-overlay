@@ -1,0 +1,21 @@
+.row
+    .col-xs-12.col-sm-6
+        .panel.panel-default
+            .panel-heading Left Caster
+            .panel-body
+                .form-group
+                    label.control-label Nick
+                    input.form-control(v-model="overlay.modified.casters.left.nick")
+                .form-group
+                    label.control-label Full name
+                    input.form-control(v-model="overlay.modified.casters.left.name")
+    .col-xs-12.col-sm-6
+        .panel.panel-default
+            .panel-heading Right Caster
+            .panel-body
+                .form-group
+                    label.control-label Nick
+                    input.form-control(v-model="overlay.modified.casters.right.nick")
+                .form-group
+                    label.control-label Full name
+                    input.form-control(v-model="overlay.modified.casters.right.name")
