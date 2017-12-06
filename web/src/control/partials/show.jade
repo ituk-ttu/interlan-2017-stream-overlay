@@ -3,6 +3,7 @@
         .panel.panel-default
             .panel-heading Show
             .panel-body
-                .btn-group(v-for="(visible, viewName) in overlay.show")
-                    button.btn.btn-lg(v-bind:class="visible ? 'btn-success' : 'btn-danger'" v-on:click="setVisible(viewName, !visible)")
-                        | {{ viewName }}
+                span.view-buttons
+                    button.btn.btn-lg(v-for="(visible, viewName) in overlay.show"
+                            v-bind:class="visible ? 'btn-success' : 'btn-danger'"
+                            v-on:click="setVisible(viewName, !visible)") {{ viewName }}

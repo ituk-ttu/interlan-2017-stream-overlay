@@ -14,17 +14,9 @@ html
         link(rel="stylesheet" href="../assets/css/master.css")
     body
         #app(v-cloak)
-            span.casters-view(v-if="data != null")
-
-                .caster.left-caster(v-bind:class="show ? '' : 'hidden'")
-                    img(src="../assets/img/caster.svg")
-                    p.nick {{data.casters.left.nick}}
-                    p.name {{data.casters.left.name}}
-                .caster.right-caster(v-bind:class="show ? '' : 'hidden'")
-                    img(src="../assets/img/caster.svg")
-                    p.nick {{data.casters.right.nick}}
-                    p.name {{data.casters.right.name}}
+            span.upnext-view(v-if="data != null")
+                img.backdrop(src="../assets/img/dotted-bg.png" v-bind:class="show ? 'visible' : ''")
 
         script.
-            var VIEW_NAME = "Casters";
+            var VIEW_NAME = "Up Next";
         script(src="../assets/js/app.js")

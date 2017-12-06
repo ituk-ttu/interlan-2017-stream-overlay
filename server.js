@@ -42,6 +42,7 @@ io.on('connection', function(socket) {
             });
             if (lastViewType) {
                 delete visibleViews[socket.viewName];
+                io.emit('visible', visibleViews);
             }
         }
     });
@@ -51,6 +52,7 @@ io.on('connection', function(socket) {
         socket.viewName = viewName;
         if (visibleViews[viewName] === undefined) {
             visibleViews[viewName] = false;
+            io.emit('visible', visibleViews);
         }
         connectedViews.push(socket);
     });

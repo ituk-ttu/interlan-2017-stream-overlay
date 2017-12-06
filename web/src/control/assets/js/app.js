@@ -4,7 +4,6 @@ var app = new Vue({
         overlay: {
             show: {}
         },
-        views: [],
         connectionActive: false,
         authed: false,
         authError: false,
