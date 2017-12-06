@@ -8,6 +8,8 @@ var clk = require("chalk");
 var config = JSON.parse(fs.readFileSync("config/config.json"));
 var data = JSON.parse(fs.readFileSync("config/data.json"));
 var show = false;
+var connectedViews = [];
+var visibleViews = {};
 
 app.use('/control', express.static(__dirname + '/web/build/control'));
 app.use('/overlay', express.static(__dirname + '/web/build/overlay'));
@@ -26,21 +28,55 @@ io.on('connection', function(socket) {
             socket.emit('authenticate', false);
         }
     });
+
     socket.on('disconnect', function() {
         console.log(clk.red.underline.bold(socket.handshake.address) + clk.red(" has disconnected"));
+        if (connectedViews.indexOf(socket) !== -1) {
+            connectedViews.splice(connectedViews.indexOf(socket), 1);
+            console.log(clk.red.underline.bold(socket.viewName) + clk.red(" view is has disconnected"));
+            var lastViewType = true;
+            connectedViews.forEach(function (view) {
+                if (view.viewName === socket.viewName) {
+                    lastViewType = false;
+                }
+            });
+            if (lastViewType) {
+                delete visibleViews[socket.viewName];
+            }
+        }
     });
-    socket.on('setVisible', function(bool) {
+
+    socket.on('viewAvailable', function(viewName) {
+        console.log(clk.blue.underline.bold(viewName) + clk.blue(" view is avalable"));
+        socket.viewName = viewName;
+        if (visibleViews[viewName] === undefined) {
+            visibleViews[viewName] = false;
+        }
+        connectedViews.push(socket);
+    });
+
+    socket.on('setVisible', function(view) {
         if (socket.authed) {
-            show = bool;
-            io.emit('visible', bool);
-            console.log(clk.green('Set visibility to ' + bool));
+            if (visibleViews[view.viewName] !== undefined) {
+                visibleViews[view.viewName] = view.visible;
+                io.emit('visible', visibleViews);
+                console.log(clk.green('Set visibility to ' + view.visible));
+            } else {
+                console.log(clk.red('View not found'));
+            }
         } else {
             console.log(clk.red('Not authed'));
         }
     });
-    socket.on('getVisible', function() {
-        socket.emit('visible', show);
+
+    socket.on('getAll', function () {
+        socket.emit('all', {"views": visibleViews, "data": data});
     });
+
+    socket.on('getVisible', function() {
+        socket.emit('visible', visibleViews);
+    });
+
     socket.on('setData', function(newValue) {
         if (socket.authed) {
             data = newValue;
@@ -50,9 +86,11 @@ io.on('connection', function(socket) {
             console.log(clk.red('Not authed'));
         }
     });
+
     socket.on('getData', function() {
         socket.emit('data', data);
     });
+
     socket.on('saveToFile', function() {
         fs.writeFileSync("config/data.json", JSON.stringify(data));
     });
