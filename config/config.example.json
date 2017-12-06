@@ -1,4 +1,6 @@
 {
   "port": 3090,
-  "password": "secret"
+  "password": "secret",
+  "toornamentId": "967099701780324352",
+  "toornamentKey": "averysecretkey"
 }
