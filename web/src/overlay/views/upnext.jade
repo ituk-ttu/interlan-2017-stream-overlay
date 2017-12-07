@@ -14,9 +14,19 @@ html
         link(rel="stylesheet" href="../assets/css/master.css")
     body
         #app(v-cloak)
-            span.backdrop-view(v-if="data != null")
-                img.backdrop(src="../assets/img/dotted-bg.png" v-bind:class="show ? 'visible' : ''")
+            span.upnext-view(v-if="data != null")
+
+                .team.left-team(v-bind:class="show ? '' : 'hidden'")
+                    img(src="../assets/img/team-hexagon.svg")
+                    .logo-container
+                        img(v-bind:src="data.teams.left.logo != null ? data.teams.left.logo.original : '../assets/img/unknown-team.svg'")
+                    p.team-name {{data.teams.left.name}}
+                .team.right-team(v-bind:class="show ? '' : 'hidden'")
+                    img(src="../assets/img/team-hexagon.svg")
+                    .logo-container
+                        img(v-bind:src="data.teams.right.logo != null ? data.teams.right.logo.original : '../assets/img/unknown-team.svg'")
+                    p.team-name {{data.teams.right.name}}
 
         script.
-            var VIEW_NAME = "Backdrop";
+            var VIEW_NAME = "Up Next";
         script(src="../assets/js/app.js")

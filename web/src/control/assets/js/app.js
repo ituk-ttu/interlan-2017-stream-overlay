@@ -32,6 +32,30 @@ var app = new Vue({
         },
         auth: function (password) {
             this.io.emit("authenticate", password);
+        },
+        swapTeams: function () {
+            var temp = this.teams.left;
+            this.teams.left = this.teams.right;
+            this.teams.right = temp;
+        },
+        updateTeams: function () {
+            this.io.emit("updateTeams");
+        },
+        getObjectAsArray: function (object) {
+            if (object !== undefined && object !== null) {
+                var array = [];
+                Object.keys(object).forEach(function (key, index) {
+                    array.push({
+                        key: key,
+                        value: object[key]
+                    });
+                });
+                return array.sort(function (a, b) {
+                    return a.key > b.key ? 1 : -1;
+                });
+            } else {
+                return []
+            }
         }
     },
     mounted: function () {

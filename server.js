@@ -100,6 +100,11 @@ io.on('connection', function(socket) {
         socket.emit('teams', teams);
     });
 
+    socket.on('updateTeams', function() {
+        updateTeams();
+        socket.emit('teams', teams);
+    });
+
     socket.on('saveToFile', function() {
         fs.writeFileSync("config/data.json", JSON.stringify(data));
     });

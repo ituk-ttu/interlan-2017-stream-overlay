@@ -4,6 +4,6 @@
             .panel-heading Show
             .panel-body
                 span.view-buttons
-                    button.btn.btn-lg(v-for="(visible, viewName) in overlay.show"
-                            v-bind:class="visible ? 'btn-success' : 'btn-danger'"
-                            v-on:click="setVisible(viewName, !visible)") {{ viewName }}
+                    button.btn.btn-lg(v-for="view in getObjectAsArray(overlay.show)"
+                            v-bind:class="view.value ? 'btn-success' : 'btn-danger'"
+                            v-on:click="setVisible(view.key, !view.value)") {{ view.key }}

@@ -1,1 +1,24 @@
-{"casters":{"left":{"nick":"Big Head1","name":"Nelson Bighetti"},"right":{"nick":"Jared","name":"Donald Dunn"}}}
+{
+  "casters": {
+    "left": {
+      "nick": "Big Head1",
+      "name": "Nelson Bighetti"
+    },
+    "right": {
+      "nick": "Jared",
+      "name": "Donald Dunn"
+    }
+  },
+  "teams": {
+    "left": {
+      "id": "???",
+      "name": "???",
+      "logo": null
+    },
+    "right": {
+      "id": "???",
+      "name": "???",
+      "logo": null
+    }
+  }
+}
