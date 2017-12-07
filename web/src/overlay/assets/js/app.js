@@ -25,5 +25,6 @@ var app = new Vue({
             self.data = data;
         });
         self.io.emit('getData');
+        self.io.emit('getViews');
     }
 });
