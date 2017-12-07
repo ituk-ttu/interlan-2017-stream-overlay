@@ -15,7 +15,7 @@ html
     body
         #app(v-cloak)
             span.upnext-view(v-if="data != null")
-                img.event-logo(src="../assets/img/logo-hexagon.svg")
+                img.event-logo(src="../assets/img/logo-hexagon.svg")(v-bind:class="show ? '' : 'hidden'")
                 .team.left-team(v-bind:class="show ? '' : 'hidden'")
                     img(src="../assets/img/team-hexagon.svg")
                     .logo-container
@@ -26,7 +26,7 @@ html
                     .logo-container
                         img(v-bind:src="data.teams.right.logo != null ? data.teams.right.logo.original : '../assets/img/unknown-team.svg'")
                     p.team-name {{data.teams.right.name}}
-                p.versus-text VS
+                p.versus-text(v-bind:class="show ? '' : 'hidden'") VS
 
         script.
             var VIEW_NAME = "Up Next";

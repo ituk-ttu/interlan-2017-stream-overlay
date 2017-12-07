@@ -1,21 +1,33 @@
 .upnext-view {
   .event-logo {
+    transition: all 600ms cubic-bezier(0, 0.8, 1, 1);
     position: absolute;
     top: -30px;
     left: 760px;
     width: 400px;
     height: 400px;
     filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.6));
+    &.hidden {
+      transform: translateY(-120%);
+    }
+
   }
   .versus-text {
+
     position: absolute;
     width: 1920px;
     bottom: -75px;
     text-align: center;
     font-weight: 800;
     font-size: 15em;
+    transition: all 600ms cubic-bezier(1, 1, 0, 0);
+    &.hidden {
+      transition: all 100ms cubic-bezier(1, 1, 0, 0);
+      transform: translateY(140%);
+    }
   }
   .team {
+    transition: all 600ms cubic-bezier(0, 0.8, 1, 1);
     width: 970px;
     height: 970px;
     position: absolute;
@@ -50,10 +62,16 @@
     }
     &.left-team {
       left: -170px;
+      &.hidden {
+        transform: translate(-120%, 120%);
+      }
 
     }
     &.right-team {
       right: -170px;
+      &.hidden {
+        transform: translate(120%,120%);
+      }
     }
   }
 }
