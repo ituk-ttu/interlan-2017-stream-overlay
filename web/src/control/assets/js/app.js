@@ -34,9 +34,9 @@ var app = new Vue({
             this.io.emit("authenticate", password);
         },
         swapTeams: function () {
-            var temp = this.teams.left;
-            this.teams.left = this.teams.right;
-            this.teams.right = temp;
+            var temp = this.overlay.modified.teams.left;
+            this.overlay.modified.teams.left = this.overlay.modified.teams.right;
+            this.overlay.modified.teams.right = temp;
         },
         updateTeams: function () {
             this.io.emit("updateTeams");
