@@ -28,6 +28,7 @@ Run `npm install`.
 ## Compiling and Developing
 
 Copy `config/config.example.json` to `config/config.json`.
+Copy `config/data.example.json` to `config/data.json`.
 
 To automagically compile files on edit run:
 

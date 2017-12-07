@@ -9,7 +9,13 @@ var app = new Vue({
         authError: false,
         io: null,
         password: "",
-        loading: true
+        loading: true,
+        teams: null,
+        nullTeam: {
+            id: "???",
+            name: "???",
+            logo: null
+        }
     },
     methods: {
         setVisible: function (viewName, bool) {
@@ -62,6 +68,8 @@ var app = new Vue({
             console.log("RECEIVED NEW DATA");
             self.overlay.current = all.data;
             self.overlay.modified = all.data;
+            console.log("RECEIVED NEW TEAMS");
+            self.teams = all.teams;
             self.loading = false;
         });
 
@@ -70,6 +78,11 @@ var app = new Vue({
             self.overlay.current = data;
             self.overlay.modified = data;
             self.loading = false;
+        });
+
+        self.io.on('teams', function (teams) {
+            console.log("RECEIVED NEW TEAMS");
+            self.teams = teams;
         });
     }
 });

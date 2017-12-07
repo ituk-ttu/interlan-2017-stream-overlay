@@ -4,12 +4,15 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require("fs");
 var clk = require("chalk");
+var request = require('sync-request');
 
 var config = JSON.parse(fs.readFileSync("config/config.json"));
 var data = JSON.parse(fs.readFileSync("config/data.json"));
 var show = false;
 var connectedViews = [];
 var visibleViews = {};
+var teams = null;
+updateTeams();
 
 app.use('/control', express.static(__dirname + '/web/build/control'));
 app.use('/overlay', express.static(__dirname + '/web/build/overlay'));
@@ -72,7 +75,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('getAll', function () {
-        socket.emit('all', {"views": visibleViews, "data": data});
+        socket.emit('all', {"views": visibleViews, "data": data, "teams": teams});
     });
 
     socket.on('getVisible', function() {
@@ -93,6 +96,10 @@ io.on('connection', function(socket) {
         socket.emit('data', data);
     });
 
+    socket.on('getTeams', function() {
+        socket.emit('teams', teams);
+    });
+
     socket.on('saveToFile', function() {
         fs.writeFileSync("config/data.json", JSON.stringify(data));
     });
@@ -101,3 +108,15 @@ io.on('connection', function(socket) {
 http.listen(config.port, function(){
     console.log('listening on *:' + config.port);
 });
+
+function updateTeams() {
+    teams = JSON.parse(
+        request('GET',
+            'https://api.toornament.com/v1/tournaments/' + config.toornamentId + '/participants',
+            {
+            'headers': {
+                'X-Api-Key': config.toornamentKey
+            }
+        }
+    ).getBody());
+}

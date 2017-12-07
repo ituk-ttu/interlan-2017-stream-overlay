@@ -1,0 +1,20 @@
+.row
+    .col-xs-12.col-sm-5
+        .panel.panel-default
+            .panel-heading Left Team
+            .panel-body
+                .form-group
+                    select.form-control(v-model="overlay.modified.teams.left")
+                        option(v-bind:value="nullTeam") NULL
+                        option(v-for="team in teams" v-bind:value="team") {{team.name}}
+    .col-xs-12.col-sm-2
+        button.btn.btn-primary.btn-block.btn-lg Swap
+        button.btn.btn-default.btn-block.btn-sm Update list
+    .col-xs-12.col-sm-5
+        .panel.panel-default
+            .panel-heading Right Team
+            .panel-body
+                .form-group
+                    select.form-control(v-model="overlay.modified.teams.right")
+                        option(v-bind:value="nullTeam") NULL
+                        option(v-for="team in teams" v-bind:value="team") {{team.name}}
