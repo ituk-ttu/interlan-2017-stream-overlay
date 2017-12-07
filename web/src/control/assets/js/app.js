@@ -37,6 +37,7 @@ var app = new Vue({
             var temp = this.overlay.modified.teams.left;
             this.overlay.modified.teams.left = this.overlay.modified.teams.right;
             this.overlay.modified.teams.right = temp;
+            app.$forceUpdate();
         },
         updateTeams: function () {
             this.io.emit("updateTeams");
