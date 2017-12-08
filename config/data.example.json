@@ -21,22 +21,22 @@
       "logo": null
     }
   },
-  "maps":[
+  "maps": [
     {
       "map": "Cache",
-      "selectedBy":"left",
-      "text": "Soon"
+      "text": "16-10",
+      "selectedBy": "Left"
+    },
+    {
+      "map": "Cobblestone",
+      "text": "Up next!",
+      "selectedBy": "Left"
     },
     {
       "map": "Cache",
-      "selectedBy":"left",
-      "text": "Soon"
-    },
-    {
-      "map": "Cache",
-      "selectedBy":"left",
-      "text": "Soon"
+      "text": "Soon",
+      "selectedBy": "Right"
     }
   ],
-  "focusedMap": null
+  "focusedMap": 0
 }
