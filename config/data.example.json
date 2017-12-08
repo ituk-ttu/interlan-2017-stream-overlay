@@ -38,5 +38,8 @@
       "selectedBy": "Right"
     }
   ],
-  "focusedMap": 0
+  "focusedMap": 0,
+  "brb": {
+    "text": "Hello!"
+  }
 }

@@ -15,9 +15,10 @@ html
     body
         #app(v-cloak)
             span.brb-view.maps-view(v-if="data != null")
-                .team.left-team
+                .hexagon(v-bind:class="show ? '' : 'hidden'")
                     img(src="../assets/img/team-hexagon-small.svg")
-                    p.team-name {{data.brb.text}}
+                    .text
+                        p {{data.brb.text}}
 
         script.
             var VIEW_NAME = "BRB";
