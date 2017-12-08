@@ -24,6 +24,7 @@
       }
     }
     .team-name {
+      transition: all 600ms cubic-bezier(0, 0.8, 1, 1);
       color: #fff;
       font-size: 1.5em;
       font-weight: 800;
@@ -36,14 +37,14 @@
     &.left-team {
       left: -70px;
       &.hidden {
-        transform: translate(-120%, 120%);
+        transform: translate(-125%, -125%);
       }
 
     }
     &.right-team {
       right: -70px;
       &.hidden {
-        transform: translate(120%,120%);
+        transform: translate(125%,-125%);
       }
     }
   }
@@ -54,13 +55,18 @@
     left: 650px;
     top: 200px;
     .map-preview {
+      transition: all 600ms cubic-bezier(0, 0.8, 1, 1);
       position: absolute;
       top: 0;
       left: 0;
       width: 620px;
       height: 720px;
+      &.hidden {
+        transform: translateY(125%);
+      }
     }
     .map-text-container {
+      transition: all 600ms cubic-bezier(0, 0.8, 1, 1);
       position: absolute;
       width: 326px;
       height: 378px;
@@ -91,6 +97,9 @@
         color: #ffffff;
         font-weight: 800;
         font-size: 4em;
+      }
+      &.hidden{
+        transform: translateY(150%);
       }
     }
   }
