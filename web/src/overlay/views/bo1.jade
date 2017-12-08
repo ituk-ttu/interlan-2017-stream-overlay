@@ -25,6 +25,12 @@ html
                     .logo-container
                         img(v-bind:src="data.teams.right.logo != null ? data.teams.right.logo.original : '../assets/img/unknown-team.svg'")
                     p.team-name {{data.teams.right.name}}
+                .map.map-single
+                    img.map-preview(v-bind:src="'../assets/img/bo1-' + toLowerCase(data.maps[0].map) + '.svg'")
+                    .map-text-container
+                        img(src="../assets/img/bo1-map-text-hexagon.svg")
+                        p.map-name {{data.maps[0].map}}
+                        p.map-text {{data.maps[0].text}}
         script.
             var VIEW_NAME = "Best of 1";
         script(src="../assets/js/app.js")

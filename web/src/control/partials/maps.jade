@@ -6,14 +6,14 @@
                 .form-group
                     label.control-label Map name
                     select.map-button.form-control(v-model="overlay.modified.maps[0].map")
-                        option(v-bind:value="UNKNOWN") UNKNOWN
+                        option(value="UNKNOWN") UNKNOWN
                         option(v-for="map in available_maps" v-bind:value="map") {{ map }}
                     button.map-button.btn.btn-lg(v-bind:class="isFocused(0) ? 'btn-success' : 'btn-danger'",
                     v-on:click="isFocused(0) ? focus(null) : focus(0)") Focus
                     label.control-label Who selected?
                     select.map-button.form-control(v-model="overlay.modified.maps[0].selectedBy")
-                        option(v-bind:value="left") Left
-                        option(v-bind:value="right") Right
+                        option(value="left") Left
+                        option(value="right") Right
                     label.control-label Text
                     input.map-button(v-model="overlay.modified.maps[0].text")
     .col-xs-12.col-sm-4
@@ -23,14 +23,14 @@
                 .form-group
                     label.control-label Map name
                     select.map-button.form-control(v-model="overlay.modified.maps[1].map")
-                        option(v-bind:value="UNKNOWN") UNKNOWN
+                        option(value="UNKNOWN") UNKNOWN
                         option(v-for="map in available_maps" v-bind:value="map") {{ map }}
                     button.map-button.btn.btn-lg(v-bind:class="isFocused(1) ? 'btn-success' : 'btn-danger'",
                     v-on:click="isFocused(1) ? focus(null) : focus(1)") Focus
                     label.control-label Who selected?
                     select.map-button.form-control(v-model="overlay.modified.maps[1].selectedBy")
-                        option(v-bind:value="left") Left
-                        option(v-bind:value="right") Right
+                        option(value="left") Left
+                        option(value="right") Right
                     label.control-label Text
                     input.map-button(v-model="overlay.modified.maps[1].text")
 
@@ -41,13 +41,13 @@
                 .form-group
                     label.control-label Map name
                     select.map-button.form-control(v-model="overlay.modified.maps[2].map")
-                        option(v-bind:value="UNKNOWN") UNKNOWN
+                        option(value="UNKNOWN") UNKNOWN
                         option(v-for="map in available_maps" v-bind:value="map") {{ map }}
                     button.map-button.btn.btn-lg(v-bind:class="isFocused(2) ? 'btn-success' : 'btn-danger'",
                     v-on:click="isFocused(2) ? focus(null) : focus(2)") Focus
                     label.control-label Who selected?
                     select.map-button.form-control(v-model="overlay.modified.maps[2].selectedBy")
-                        option(v-bind:value="left") Left
-                        option(v-bind:value="right") Right
+                        option(value="left") Left
+                        option(value="right") Right
                     label.control-label Text
                     input.map-button(v-model="overlay.modified.maps[2].text")

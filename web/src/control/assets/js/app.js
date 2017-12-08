@@ -11,7 +11,6 @@ var app = new Vue({
         password: "",
         loading: true,
         teams: null,
-        focused_map: null,
         available_maps: ["Cache", "Cobblestone", "Inferno", "Mirage", "Nuke", "Overpass", "Train"],
         nullTeam: {
             id: "???",
@@ -61,10 +60,11 @@ var app = new Vue({
             }
         },
         isFocused: function (map) {
-            return map === this.focused_map;
+            return map === this.overlay.modified.focusedMap;
         },
         focus: function (map) {
-            this.focused_map = map;
+            this.overlay.modified.focusedMap = map;
+            app.$forceUpdate();
         }
     },
     mounted: function () {

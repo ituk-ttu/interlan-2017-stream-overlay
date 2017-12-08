@@ -26,5 +26,10 @@ var app = new Vue({
         });
         self.io.emit('getData');
         self.io.emit('getViews');
+    },
+    methods: {
+        toLowerCase: function (str) {
+            return String(str).toLowerCase();
+        }
     }
 });

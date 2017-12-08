@@ -26,6 +26,17 @@
       "map": "Cache",
       "selectedBy":"left",
       "text": "Soon"
+    },
+    {
+      "map": "Cache",
+      "selectedBy":"left",
+      "text": "Soon"
+    },
+    {
+      "map": "Cache",
+      "selectedBy":"left",
+      "text": "Soon"
     }
-  ]
+  ],
+  "focusedMap": null
 }
