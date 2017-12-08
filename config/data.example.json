@@ -20,5 +20,12 @@
       "name": "???",
       "logo": null
     }
-  }
+  },
+  "maps":[
+    {
+      "map": "Cache",
+      "selectedBy":"left",
+      "text": "Soon"
+    }
+  ]
 }
