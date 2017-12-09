@@ -14,7 +14,7 @@ html
         link(rel="stylesheet" href="../assets/css/master.css")
     body
         #app(v-cloak)
-            span.bo1-view.maps-view(v-if="data != null")
+            span.bo3-view.maps-view(v-if="data != null")
                 .team.left-team(v-bind:class="show ? '' : 'hidden'")
                     img(src="../assets/img/team-hexagon-small.svg")
                     .logo-container
@@ -25,12 +25,24 @@ html
                     .logo-container
                         img(v-bind:src="data.teams.right.logo != null ? data.teams.right.logo.original : '../assets/img/unknown-team.svg'")
                     p.team-name {{data.teams.right.name}}
-                .map.map-single
-                    img.map-preview(v-bind:src="'../assets/img/bo1-' + toLowerCase(data.maps[0].map) + '.svg'" v-bind:class="show ? '' : 'hidden'")
+                .map.map-left(v-bind:class= "data.focusedMap == 0 ? 'active' : ''")
+                    img.map-preview(v-bind:src="'../assets/img/bo1-' + toLowerCase(data.maps[0].map) + '.svg'")(v-bind:class="show ? '' : 'hidden'")
                     .map-text-container(v-bind:class="show ? '' : 'hidden'")
                         img(src="../assets/img/bo1-map-text-hexagon.svg")
                         p.map-name {{data.maps[0].map}}
                         p.map-text {{data.maps[0].text}}
+                .map.map-middle(v-bind:class= "data.focusedMap == 1 ? 'active' : ''")
+                    img.map-preview(v-bind:src="'../assets/img/bo1-' + toLowerCase(data.maps[1].map) + '.svg'")(v-bind:class="show ? '' : 'hidden'")
+                    .map-text-container(v-bind:class="show ? '' : 'hidden'")
+                        img(src="../assets/img/bo1-map-text-hexagon.svg")
+                        p.map-name {{data.maps[1].map}}
+                        p.map-text {{data.maps[1].text}}
+                .map.map-right(v-bind:class= "data.focusedMap == 2 ? 'active' : ''")
+                    img.map-preview(v-bind:src="'../assets/img/bo1-' + toLowerCase(data.maps[2].map) + '.svg'")(v-bind:class="show ? '' : 'hidden'")
+                    .map-text-container(v-bind:class="show ? '' : 'hidden'")
+                        img(src="../assets/img/bo1-map-text-hexagon.svg")
+                        p.map-name {{data.maps[2].map}}
+                        p.map-text {{data.maps[2].text}}
         script.
-            var VIEW_NAME = "Best of 1";
+            var VIEW_NAME = "Best of 3";
         script(src="../assets/js/app.js")
